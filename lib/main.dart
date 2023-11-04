@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_gestor_app/config/config.dart';
-import 'package:gym_gestor_app/config/constants/environment.dart';
 void main() async {
   
   // await Environment.initEnvironment();
