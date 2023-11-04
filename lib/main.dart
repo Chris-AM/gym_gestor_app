@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_gestor_app/config/config.dart';
+import 'package:gym_gestor_app/config/constants/environment.dart';
+void main() async {
+  
+  // await Environment.initEnvironment();
 
-Future<void> main() async {}
+  runApp(
+    const ProviderScope(child: GymGestor())
+  );
+}
 
 class GymGestor extends ConsumerWidget {
   const GymGestor({super.key});
@@ -10,6 +17,7 @@ class GymGestor extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final GlobalAppTheme globalAppTheme = ref.watch(globalAppThemeProvider);
+    final appRouter = ref.watch(appRouterProvider);
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Gym Gestor',
