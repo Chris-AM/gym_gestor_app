@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '/features/auth/presentation/providers/auth_provider.dart';
 import '/features/auth/presentation/screens/screens.dart';
-import '/features/home/presentation/screens/home_screen.dart';
+import '/features/home/presentation/screens/screens.dart';
 
 import 'app_router_notifier.dart';
 
@@ -21,8 +21,14 @@ final appRouterProvider = Provider((ref) {
           builder: (context, state) => const LoginScreen(),
         ),
         GoRoute(
-          path: '/home',
-          builder: (context, state) => const HomeScreen(),
+          path: '/home/:screenIndex',
+          builder: (context, state) {
+            final String screenIndex =
+                state.pathParameters['screenIndex'] ?? '0';
+            return HomeScreen(
+              screenIndex: int.parse(screenIndex),
+            );
+          },
         ),
       ],
       redirect: (context, state) {
@@ -40,7 +46,7 @@ final appRouterProvider = Provider((ref) {
 
         if (authStatus == AuthStatus.authenticated) {
           if (isGoingTo == '/login' || isGoingTo == '/splash') {
-            return '/home';
+            return '/home/0';
           }
         }
         return null;
