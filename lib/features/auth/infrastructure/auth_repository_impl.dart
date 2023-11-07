@@ -1,5 +1,5 @@
-import 'package:gym_gestor_app/domain/entities/user_entity.dart';
-import 'package:gym_gestor_app/features/auth/domain/domain.dart';
+import '/domain/domain.dart';
+import '/features/auth/domain/domain.dart';
 
 import 'infrastructure.dart';
 
